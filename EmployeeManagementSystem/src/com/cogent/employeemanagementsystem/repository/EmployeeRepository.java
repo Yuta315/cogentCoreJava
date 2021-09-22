@@ -2,51 +2,14 @@ package com.cogent.employeemanagementsystem.repository;
 
 import com.cogent.employeemanagementsystem.model.Employee;
 
-public class EmployeeRepository {
+public interface EmployeeRepository {
 
-	private Employee employees[] = new Employee[10];
+	public String addEmployee(Employee employee);
+	public String deleteEmployeeById(String id);
+	public void deleteAllEmployees();
+	public Employee getEmployeeById(String id);
+	public Employee[] getEmployees();
+	public String updateEmployee(String id, Employee employee);
 	
-	private static EmployeeRepository employeeRepository;
 	
-	private EmployeeRepository()
-	{
-//		TODO Auto-generated constructor stub
-		
-	}
-	
-	public static EmployeeRepository getInstance()
-	{
-		if(employeeRepository == null)
-		{
-			employeeRepository = new EmployeeRepository();
-			return employeeRepository;
-		}
-		return employeeRepository;
-	}
-	
-	static int counter = 0;
-	public String addEmployee(Employee employee)
-	{
-//		do we need to maintain the index for an employees array?
-	
-		if(counter >= employees.length)
-		{	
-			return "array is full";
-		}
-		
-		employees[counter++] = employee;
-		return "Success";
-	}
-//	this method should give us employee details on the basis of id
-	public Employee getEmployeeById(String id)
-	{
-		for(Employee employee : employees)
-		{
-			if(employee != null && id.equals(employee.getEmployeeId()))
-			{
-				return employee;
-			}
-		}
-		return null;
-	}
 }
