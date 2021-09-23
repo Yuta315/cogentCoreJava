@@ -9,6 +9,7 @@ public interface EmployeeService {
 	public void deleteAllEmployees();
 	public Employee getEmployeeById(String id);
 	public Employee[] getEmployees();
+	public Employee[] getEmployeesByName(String name);
 	public String updateEmployee(String id, Employee employee);
 	
 }

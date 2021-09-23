@@ -104,12 +104,40 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 	
 	@Override
 	public void deleteAllEmployees() {
-		// TODO Auto-generated method stub	
+		// TODO Auto-generated method stub
+		employees = null;
 	}
 	
 	@Override
 	public String updateEmployee(String id, Employee employee) {
 		// TODO Auto-generated method stub
-		return null;
+
+		this.getEmployeeById(id);
+		
+//		this.getIndex(employee);
+		
+		int index = this.getIndex(employee);
+		employees[index] = employee;
+		
+		return "Success";
+		
+//		return null;
 	}
+	
+	private static int index = 0;
+	public Employee[] getEmployeesByName(String name)
+	{
+		Employee[] employeesTemp = new Employee[employees.length];
+		
+		for(Employee employee : employees)
+		{
+			if(employee.getFirstName().equals(name))
+			{
+				employeesTemp [index++] = employee;
+				
+			}
+		}
+		return employeesTemp;
+	}
+	
 }
