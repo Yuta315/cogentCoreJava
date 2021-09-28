@@ -5,11 +5,12 @@ import java.io.IOException;
 import com.cogent.employeemanagementsystem.exception.IdNotFoundException;
 import com.cogent.employeemanagementsystem.model.Employee;
 import com.cogent.employeemanagementsystem.repository.EmployeeRepository;
+import com.cogent.employeemanagementsystem.repository.EmployeeRepositoryALImpl;
 import com.cogent.employeemanagementsystem.repository.EmployeeRepositoryImpl;
 
 public class EmployeeServiceImpl implements EmployeeService{
 	
-	EmployeeRepository employeeRepository = EmployeeRepositoryImpl.getInstance();
+	EmployeeRepository employeeRepository = EmployeeRepositoryALImpl.getInstance();
 //	are we consuming the repo?
 	
 //	loose coupling : 
@@ -32,9 +33,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 	
 //	EmployeeRepositoryImpl employeeRepository = EmployeeRepositoryImpl.getInstance();
 
-	
-	
-	
+
 	public String addEmployee(Employee employee)
 	{
 		return employeeRepository.addEmployee(employee);

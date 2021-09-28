@@ -2,12 +2,13 @@ package com.cogent.productmanagement.service;
 import com.cogent.productmanagement.exception.InvalidProductId;
 import com.cogent.productmanagement.model.Product;
 import com.cogent.productmanagement.repository.ProductRepository;
+import com.cogent.productmanagement.repository.ProductRepositoryALImpl;
 import com.cogent.productmanagement.repository.ProductRepositoryImpl;
 import java.io.*;
 
 public class ProductServiceImpl implements ProductService {
 
-	ProductRepository productRepository = ProductRepositoryImpl.getInstance();
+	ProductRepository productRepository = ProductRepositoryALImpl.getInstance();
 	
 	private static ProductService productService;
 	

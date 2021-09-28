@@ -10,7 +10,7 @@ import lombok.AllArgsConstructor;
 
 
 @Data
-@AllArgsConstructor
+//@AllArgsConstructor
 
 public final class Product {
 
@@ -73,6 +73,24 @@ public final class Product {
 	}
 	public void setBatchNo(String batchNo) {
 		this.batchNo = batchNo;
+	}
+	public Product(String productId, String productName, int productPrice, int qty, 
+			Date createdDate, Date expiryDate, String batchNo) throws InvalidProductId, InvalidProductName, InvalidProductPrice {
+		// TODO Auto-generated constructor stub
+		
+		super();
+		this.productId = productId;
+		this.productName = productName;
+		this.productPrice = productPrice;
+		this.qty = qty;
+		this.createdDate = createdDate;
+		this.expiryDate = expiryDate;
+		this.batchNo = batchNo;
+		this.setProductId(productId);
+		this.setProductName(productName);
+		this.setProductPrice(productPrice);
+		
+//		this.empSalary = empSalary;
 	}
 	
 	

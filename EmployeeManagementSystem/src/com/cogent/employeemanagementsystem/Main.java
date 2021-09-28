@@ -1,5 +1,6 @@
 package com.cogent.employeemanagementsystem;
 
+import com.cogent.employeemanagementsystem.exception.IdNotFoundException;
 import com.cogent.employeemanagementsystem.exception.InvalidSalaryException;
 import com.cogent.employeemanagementsystem.model.Employee;
 import com.cogent.employeemanagementsystem.service.EmployeeService;
@@ -48,13 +49,26 @@ public class Main {
 //			e.printStackTrace();
 //		}
 		
-		Employee employee = new Employee("Yuta001", "Yuta", "Mogi", 315.00f);
+//		EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
+		EmployeeService employeeService = EmployeeServiceImpl.getInstance();
+		
+//		Employee employee = new Employee("Yuta001", "Yuta", "Mogi", 315.00f);
+		String result = null;
 		try {
-			employee.setEmpSalary(-5000.0f);
+//			employee.setEmpSalary(5000.0f);
+			result = employeeService.addEmployee(new Employee("Yuta001", "Yuta", "Mogi", 315.00f));
+			System.out.println(result);
 		} catch (InvalidSalaryException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		if("Success".equals(result))
+		{
+			System.out.println("Employee added successfully");
+		}
+		
+		
 
 	}
 	
@@ -194,7 +208,20 @@ public class Main {
 //		catch (Object e) {
 //			// TODO: handle exception
 //		}
-
+//		EmployeeService employeeService = EmployeeServiceImpl.getInstance();
+//		try {
+//			Employee employee = employeeService.getEmployeeById("Yuta001");
+//		} catch (IdNotFoundException e) {
+			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+	// will terminate execution because it went from checked exception to unchecked exception
+	// if throws used inside main it terminates execution.
 		
+	
+	
 //	}
 }

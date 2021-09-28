@@ -131,5 +131,21 @@ public class ProductRepositoryImpl implements ProductRepository {
 
 		products = null;
 	}
+	
+	private static int index = 0;
+	public Product[] getProductsByName(String name)
+	{
+		Product[] productsTemp = new Product[products.length];
+		
+		for(Product product : products)
+		{
+			if(product.getProductId().equals(name))
+			{
+				productsTemp [index++] = product;
+				
+			}
+		}
+		return productsTemp;
+	}
 
 }
