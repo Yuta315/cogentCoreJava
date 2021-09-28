@@ -1,9 +1,11 @@
 package com.cogent.productmanagement;
 
-import java.util.*;
+import java.util.Date;
+
 import com.cogent.productmanagement.model.Product;
 import com.cogent.productmanagement.service.ProductService;
 import com.cogent.productmanagement.service.ProductServiceImpl;
+import com.cogent.productmanagement.exception.*;
 
 public class Main {
 
@@ -32,8 +34,33 @@ public class Main {
 		
 
 		productService.deleteAllProducts();
-		productService.getProductById("KU100");
-		productService.updateProduct("KU100", product);
+		
+//		product.setProductName("KU100");
+		
+		try {
+			product.setProductName("");
+		} catch (InvalidProductName e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			product.setProductId(null);
+		} catch (InvalidProductId e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		try {
+			product.setProductPrice(-100);
+		} catch (InvalidProductPrice e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		
+//		productService.getProductById("KU100");
+//		productService.updateProduct("KU100", product);
 	}
 
 }

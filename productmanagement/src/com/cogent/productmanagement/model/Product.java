@@ -1,6 +1,10 @@
 package com.cogent.productmanagement.model;
 import java.util.*;
 
+import com.cogent.productmanagement.exception.InvalidProductId;
+import com.cogent.productmanagement.exception.InvalidProductName;
+import com.cogent.productmanagement.exception.InvalidProductPrice;
+
 import lombok.*;
 import lombok.AllArgsConstructor;
 
@@ -21,20 +25,30 @@ public final class Product {
 	public String getProductId() {
 		return productId;
 	}
-	public void setProductId(String productId) {
+	public void setProductId(String productId) throws InvalidProductId{
+		if(productId != null)
 		this.productId = productId;
+		else
+			throw new InvalidProductId("Product Id is invalid.");
 	}
+	
 	public String getProductName() {
 		return productName;
 	}
-	public void setProductName(String productName) {
+	public void setProductName(String productName) throws InvalidProductName{
+		if(productName != null)
 		this.productName = productName;
+		else
+			throw new InvalidProductName("Product Name is invalid.");
 	}
 	public float getProductPrice() {
 		return productPrice;
 	}
-	public void setProductPrice(float productPrice) {
+	public void setProductPrice(float productPrice) throws InvalidProductPrice{
+		if(productPrice > 0)
 		this.productPrice = productPrice;
+		else
+			throw new InvalidProductPrice("Product Price should be positive.");
 	}
 	public long getQty() {
 		return qty;

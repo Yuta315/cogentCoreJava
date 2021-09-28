@@ -1,5 +1,8 @@
 package com.cogent.productmanagement.repository;
 
+import java.io.IOException;
+
+import com.cogent.productmanagement.exception.InvalidProductId;
 import com.cogent.productmanagement.model.Product;
 
 public class ProductRepositoryImpl implements ProductRepository {
@@ -39,7 +42,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 	}
 
 	@Override
-	public String updateProduct(String productId, Product product) {
+	public String updateProduct(String productId, Product product) throws InvalidProductId, IOException {
 		// TODO Auto-generated method stub
 		this.getProductById(productId);
 
@@ -52,7 +55,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 	}
 
 	@Override
-	public Product getProductById(String id) {
+	public Product getProductById(String id) throws InvalidProductId, IOException {
 		// TODO Auto-generated method stub
 		
 		for(Product product : products)
@@ -74,7 +77,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 	}
 
 	@Override
-	public String deleteProductById(String id) {
+	public String deleteProductById(String id) throws InvalidProductId, IOException{
 		// TODO Auto-generated method stub
 //		1. that id exists or not.
 		Product product = this.getProductById(id);
@@ -96,12 +99,14 @@ public class ProductRepositoryImpl implements ProductRepository {
 		}
 		else
 		{
-			return "not found";
+//			return "not found";
+			throw new InvalidProductId("ID not found");
 		}
 //		2. id exists then set null to location?
 //		if return not found
 		
-		return "not found";	
+//		return "not found";
+		throw new InvalidProductId("ID not found");
 		
 //		return null;
 	}
