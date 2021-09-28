@@ -72,7 +72,6 @@ public class Main {
 			e.printStackTrace();
 		}
 
-
 //			result = productService.addProduct(new Product("001", "KU100", 100, 5, new Date(), new Date(), "Mic001"));
 //			result = productService.addProduct(product);
 
