@@ -1,6 +1,8 @@
 package com.cogent.employeemanagementsystem.repository;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.*;
 
 import com.cogent.employeemanagementsystem.exception.IdNotFoundException;
 import com.cogent.employeemanagementsystem.model.Employee;
@@ -62,6 +64,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 	}
 	
 	public Employee[] getEmployees()
+//	public List<Employee> getEmployees()
 	{
 		return employees;
 	}
@@ -115,6 +118,8 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 	@Override
 	public void deleteAllEmployees() {
 		// TODO Auto-generated method stub
+		
+
 		employees = null;
 	}
 	

@@ -1,6 +1,7 @@
 package com.cogent.employeemanagementsystem.repository;
 
 import java.io.IOException;
+import java.util.List;
 
 import com.cogent.employeemanagementsystem.exception.IdNotFoundException;
 import com.cogent.employeemanagementsystem.model.Employee;
@@ -11,8 +12,8 @@ public interface EmployeeRepository {
 	public String deleteEmployeeById(String id) throws IdNotFoundException, IOException;
 	public void deleteAllEmployees() throws IdNotFoundException, IOException;
 	public Employee getEmployeeById(String id) throws IdNotFoundException, IOException;
-	public Employee[] getEmployees();
+	public List<Employee> getEmployees();
 	public String updateEmployee(String id, Employee employee) throws IdNotFoundException, IOException;
-	
+	public boolean isEmployeeExists(String id);
 	
 }

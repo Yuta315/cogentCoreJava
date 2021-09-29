@@ -68,6 +68,10 @@ public class Main {
 			System.out.println("Employee added successfully");
 		}
 		
+//		System.out.println(employeeService.getEmployees());
+//		String status = employeeService.deleteEmployeeById(null);
+//		System.out.println(status);
+		
 		
 
 	}

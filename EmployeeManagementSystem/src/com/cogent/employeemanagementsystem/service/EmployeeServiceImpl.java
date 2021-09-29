@@ -1,6 +1,7 @@
 package com.cogent.employeemanagementsystem.service;
 
 import java.io.IOException;
+import java.util.List;
 
 import com.cogent.employeemanagementsystem.exception.IdNotFoundException;
 import com.cogent.employeemanagementsystem.model.Employee;
@@ -44,7 +45,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 		return employeeRepository.getEmployeeById(id);
 	}
 	
-	public Employee[] getEmployees()
+	public List<Employee> getEmployees()
 	{
 		return employeeRepository.getEmployees();
 	}
