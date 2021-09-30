@@ -12,7 +12,9 @@ import lombok.ToString;
 //@AllArgsConstructor
 @ToString
 
-public final class Employee {
+public class Employee {
+//public final class Employee {
+//public class Employee implements Comparable<Employee> {
 	
 
 	
@@ -105,6 +107,20 @@ public final class Employee {
 	
 		
 	}
+
+
+//	@Override
+//	public int compareTo(Employee o) {
+//		// TODO Auto-generated method stub
+//		
+////		can we arrange the employees on the basis of empId
+//		
+//		return this.employeeId.compareTo(o.employeeId);
+//	}
+
+	
+	
+	
 	
 //	  public Employee(String employeeId, String firstName, String lastName, float empSalary)
 //	  {
