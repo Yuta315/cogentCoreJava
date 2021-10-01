@@ -44,7 +44,17 @@ public class TreeSetDemo {
 			@Override
 			public int compare(Employee o1, Employee o2) {
 				// TODO Auto-generated method stub
-				return Float.valueOf(o1.getEmpSalary()).compareTo(Float.valueOf(o2.getEmpSalary()));
+//				return Float.valueOf(o1.getEmpSalary()).compareTo(Float.valueOf(o2.getEmpSalary()));
+				Float a = (Float) o1.getEmpSalary();
+				Float b = (Float) o2.getEmpSalary();
+//				return a.compareTo(b);
+//				return super.compare(a,b);
+//				return ((Float) o1.getEmpSalary(), (Float) o2.getEmpSalary());
+				return new Float(o1.getEmpSalary()).compareTo(o2.getEmpSalary());
+//				return valueOf(o1.getEmpSalary(),o2.getEmpSalary());
+//				int test = Float.valueOf(o1.getEmpSalary()).compareTo(Float.valueOf(o2.getEmpSalary()));
+//				return test;
+//				return 0;
 			}
 		}; // anonymous class
 
