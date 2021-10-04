@@ -5,6 +5,7 @@ import java.util.Map.Entry;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 import java.util.function.*;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -201,7 +202,7 @@ public class Main {
 		List<Integer> result2 = math(list, x -> x * 2);
 		System.out.println(result2);
 		
-		List<String> list3 = Arrays.asList("YUTA", "YUTAMOGI", "YUTA315", "JP1NZ2USA3");
+		List<String> list3 = Arrays.asList("YUTA", "YUTAMOGI", "YUTASUSHI", "JP1NZ2USA3");
 		list3.stream().map(String::toLowerCase).forEach(System.out::println);
 		
 		
@@ -219,6 +220,31 @@ public class Main {
 		
 		Integer result4 = math2(Arrays.asList(numbers), 0, Integer::sum);
 		System.out.println(result4); // 55
+		
+		
+		
+		
+		
+		Predicate<Integer> predicateGraterThan = x -> x > 3;
+		Predicate<Integer> predicate = x -> x %2 == 0;
+//		List<Integer> result5 = Arrays.asList(numbers).stream().filter(predicateGraterThan).toList();
+//		List<Integer> result5 = Arrays.asList(numbers).stream().filter(predicateGraterThan)
+//				.collect(Collectors.toList()); // strem to Collection ===> list collection.
+//		List<Integer> result5 = Arrays.asList(numbers).stream().filter(x -> x > 3 && x %2 == 0).toList();
+//		List<Integer> result5 = Arrays.asList(numbers).stream().filter(predicateGraterThan.and(predicate)).toList();
+		List<Integer> result5 = Arrays.asList(numbers).stream().filter(predicateGraterThan.negate()).toList();
+		
+		result5.forEach(System.out::println);
+		
+		
+		
+		
+		
+		Supplier<List<String>> arrayList = supplier();
+		List<String> list4 = arrayList.get();
+		
+		Supplier<List<Float>> supplier = supplier();
+		supplier.get();
 	}
 	
 	private static double sum(List<? extends Number> list) {
@@ -269,5 +295,10 @@ public class Main {
 			result = accumulator.apply(result,t);
 		}
 		return result;
+	}
+	
+	public static <T> Supplier<List<T>> supplier() {
+		return () -> new ArrayList<T>();
+		
 	}
 }
