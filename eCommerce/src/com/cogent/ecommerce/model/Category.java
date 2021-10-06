@@ -1,5 +1,11 @@
 package com.cogent.ecommerce.model;
 
+import lombok.*;
+
+@Data
+@AllArgsConstructor
+
+
 public class Category {
 	
 	private String catId;
@@ -11,23 +17,4 @@ public class Category {
 
 	}
 	
-	public Category(String catId, String catName) {
-		super();
-		this.catId = catId;
-		this.catName = catName;
-	}
-	
-	public String getCatId() {
-		return catId;
-	}
-	public void setCatId(String catId) {
-		this.catId = catId;
-	}
-	public String getCatName() {
-		return catName;
-	}
-	public void setCatName(String catName) {
-		this.catName = catName;
-	}
-
 }

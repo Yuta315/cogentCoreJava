@@ -1,5 +1,10 @@
 package com.cogent.ecommerce.model;
 
+import lombok.*;
+
+@Data
+@AllArgsConstructor
+
 public class Role {
 	
 	private String roleId;
@@ -10,24 +15,4 @@ public class Role {
 		this.roleId = "";	
 	}
 
-	public Role(String roleId, String roleName) {
-		super();
-		this.roleId = roleId;
-		this.roleName = roleName;
-	}
-	
-	public String getRoleId() {
-		return roleId;
-	}
-	public void setRoleId(String roleId) {
-		this.roleId = roleId;
-	}
-	public String getRoleName() {
-		return roleName;
-	}
-	public void setRoleName(String roleName) {
-		this.roleName = roleName;
-	}
-	
-	
 }
