@@ -6,6 +6,27 @@ import com.cogent.ecommerce.model.Role;
 
 public class RoleServiceImpl implements RoleService {
 
+	private static RoleService roleService;
+	private RoleServiceImpl()
+	{
+		
+	}
+	public static RoleService getInstance()
+	{
+		if(roleService == null) {
+			
+//			synchronized (cartRepositoryALImpl.class) {
+			synchronized (RoleServiceImpl.class) {
+				if(roleService == null) {
+					roleService = new  RoleServiceImpl();
+					return roleService;
+				}
+			}
+		}
+		return roleService;
+	}
+	
+	
 	@Override
 	public String addRole(Role Role) {
 		// TODO Auto-generated method stub

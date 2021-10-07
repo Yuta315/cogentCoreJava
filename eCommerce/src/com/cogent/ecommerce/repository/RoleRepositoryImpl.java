@@ -6,6 +6,38 @@ import com.cogent.ecommerce.model.Role;
 
 public class RoleRepositoryImpl implements RoleRepository {
 
+private Role role[] = new Role[10];
+	
+	private static RoleRepository roleRepository;
+	
+	private RoleRepositoryImpl() {
+		
+	}
+
+	public static RoleRepository getInstance()
+	{
+//		if(cartRepository == null)
+//		{
+//			cartRepository = new CartRepositoryImpl();
+//			return cartRepository;
+//		}
+//		return cartRepository;
+		
+		if(roleRepository == null) {
+			
+//			synchronized (cartRepositoryALImpl.class) {
+			synchronized (RoleRepositoryImpl.class) {
+				if(roleRepository == null) {
+					roleRepository = new RoleRepositoryImpl();
+					return roleRepository;
+				}
+			}
+		}
+		return roleRepository;
+		
+	}
+	
+	
 	@Override
 	public String addRole(Role Role) {
 		// TODO Auto-generated method stub

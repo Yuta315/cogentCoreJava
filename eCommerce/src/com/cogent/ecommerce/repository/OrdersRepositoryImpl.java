@@ -5,6 +5,38 @@ import java.util.List;
 import com.cogent.ecommerce.model.Orders;
 
 public class OrdersRepositoryImpl implements OrdersRepository {
+	
+private Orders orders[] = new Orders[10];
+	
+	private static OrdersRepository ordersRepository;
+	
+	private OrdersRepositoryImpl() {
+		
+	}
+
+	public static OrdersRepository getInstance()
+	{
+//		if(cartRepository == null)
+//		{
+//			cartRepository = new CartRepositoryImpl();
+//			return cartRepository;
+//		}
+//		return cartRepository;
+		
+		if(ordersRepository == null) {
+			
+//			synchronized (cartRepositoryALImpl.class) {
+			synchronized (InventoryRepositoryImpl.class) {
+				if(ordersRepository == null) {
+					ordersRepository = new OrdersRepositoryImpl();
+					return ordersRepository;
+				}
+			}
+		}
+		return ordersRepository;
+		
+	}
+	
 
 	@Override
 	public String addOrders(Orders Orders) {

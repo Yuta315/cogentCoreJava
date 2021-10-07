@@ -18,13 +18,28 @@ public class CartRepositoryImpl implements CartRepository {
 
 	public static CartRepository getInstance()
 	{
-		if(cartRepository == null)
-		{
-			cartRepository = new CartRepositoryImpl();
-			return cartRepository;
+//		if(cartRepository == null)
+//		{
+//			cartRepository = new CartRepositoryImpl();
+//			return cartRepository;
+//		}
+//		return cartRepository;
+		
+		if(cartRepository == null) {
+			
+//			synchronized (cartRepositoryALImpl.class) {
+			synchronized (CartRepositoryImpl.class) {
+				if(cartRepository == null) {
+					cartRepository = new CartRepositoryImpl();
+					return cartRepository;
+				}
+			}
 		}
 		return cartRepository;
+		
 	}
+	
+//	private Set<Cart> carts = new HashSet<>;
 	
 	static int counter = 0;
 

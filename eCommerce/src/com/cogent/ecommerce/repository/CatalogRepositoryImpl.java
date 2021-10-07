@@ -5,6 +5,39 @@ import java.util.List;
 import com.cogent.ecommerce.model.Catalog;
 
 public class CatalogRepositoryImpl implements CatalogRepository {
+	
+private Catalog catalogs[] = new Catalog[10];
+	
+	private static CatalogRepository catalogRepository;
+	
+	private CatalogRepositoryImpl() {
+		
+	}
+
+	public static CatalogRepository getInstance()
+	{
+//		if(cartRepository == null)
+//		{
+//			cartRepository = new CartRepositoryImpl();
+//			return cartRepository;
+//		}
+//		return cartRepository;
+		
+		if(catalogRepository == null) {
+			
+//			synchronized (cartRepositoryALImpl.class) {
+			synchronized (CatalogRepositoryImpl.class) {
+				if(catalogRepository == null) {
+					catalogRepository = new CatalogRepositoryImpl();
+					return catalogRepository;
+				}
+			}
+		}
+		return catalogRepository;
+		
+	}
+	
+	
 
 	@Override
 	public String addCatalog(Catalog Catalog) {

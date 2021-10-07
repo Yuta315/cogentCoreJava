@@ -5,6 +5,39 @@ import java.util.List;
 import com.cogent.ecommerce.model.Inventory;
 
 public class InventoryRepositoryImpl implements InventoryRepository {
+	
+private Inventory inventorys[] = new Inventory[10];
+	
+	private static InventoryRepository inventoryRepository;
+	
+	private InventoryRepositoryImpl() {
+		
+	}
+
+	public static InventoryRepository getInstance()
+	{
+//		if(cartRepository == null)
+//		{
+//			cartRepository = new CartRepositoryImpl();
+//			return cartRepository;
+//		}
+//		return cartRepository;
+		
+		if(inventoryRepository == null) {
+			
+//			synchronized (cartRepositoryALImpl.class) {
+			synchronized (InventoryRepositoryImpl.class) {
+				if(inventoryRepository == null) {
+					inventoryRepository = new InventoryRepositoryImpl();
+					return inventoryRepository;
+				}
+			}
+		}
+		return inventoryRepository;
+		
+	}
+	
+	
 
 	@Override
 	public String addInventory(Inventory Inventory) {

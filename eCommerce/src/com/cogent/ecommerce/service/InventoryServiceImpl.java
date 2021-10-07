@@ -5,6 +5,27 @@ import java.util.List;
 import com.cogent.ecommerce.model.Category;
 
 public class InventoryServiceImpl implements InventoryService  {
+	
+	private static InventoryService inventoryService;
+	private InventoryServiceImpl()
+	{
+		
+	}
+	public static InventoryService getInstance()
+	{
+		if(inventoryService == null) {
+			
+//			synchronized (cartRepositoryALImpl.class) {
+			synchronized (InventoryServiceImpl.class) {
+				if(inventoryService == null) {
+					inventoryService = new InventoryServiceImpl();
+					return inventoryService;
+				}
+			}
+		}
+		return inventoryService;
+	}
+	
 
 	@Override
 	public String addCategory(Category Category) {

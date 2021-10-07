@@ -3,8 +3,36 @@ package com.cogent.ecommerce.service;
 import java.util.List;
 
 import com.cogent.ecommerce.model.Category;
+import com.cogent.ecommerce.repository.CategoryRepository;
+import com.cogent.ecommerce.repository.CategoryRepositoryImpl;
 
 public class CategoryServiceImpl implements CategoryService {
+	
+	CategoryRepository categoryRepository = CategoryRepositoryImpl.getInstance();
+//	are we consuming the repo?
+	
+//	loose coupling : 
+	
+	private static CategoryService categoryService;
+	private CategoryServiceImpl()
+	{
+		
+	}
+	public static CategoryService getInstance()
+	{
+		if(categoryService == null) {
+			
+//			synchronized (cartRepositoryALImpl.class) {
+			synchronized (CategoryServiceImpl.class) {
+				if(categoryService == null) {
+					categoryService = new CategoryServiceImpl();
+					return categoryService;
+				}
+			}
+		}
+		return categoryService;
+	}
+	
 
 	@Override
 	public String addCategory(Category Category) {

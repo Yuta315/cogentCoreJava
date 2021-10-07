@@ -11,22 +11,54 @@ import com.cogent.employeemanagementsystem.model.Employee;
 public class EmployeeRepositoryALImpl implements EmployeeRepository {
 	
 	//Singleton DP.
+	
+	public static void main(String[] args) {
+		Thread thread = new Thread(()-> {
+			EmployeeRepository employeeRepository2 = EmployeeRepositoryALImpl.getInstance();
+			System.out.println(employeeRepository2.hashCode());
+			
+		});
+		
+		thread.start();
+		Thread thread2 = new Thread(()-> {
+			EmployeeRepository employeeRepository = EmployeeRepositoryALImpl.getInstance();
+			System.out.println(employeeRepository.hashCode());
+			
+		});
+	
+		thread2.start();
+	}
+	
+	
+private static EmployeeRepository employeeRepository;
 
 	private EmployeeRepositoryALImpl()
 	{
 		
 	}
 
-private static EmployeeRepository employeeRepository;
-	
 	public static EmployeeRepository getInstance()
+//	public synchronized static EmployeeRepository getInstance()
 	{
-		if(employeeRepository == null)
-		{
-			employeeRepository = new EmployeeRepositoryALImpl();
-			return employeeRepository;
+//		if(employeeRepository == null)
+//		{
+//			employeeRepository = new EmployeeRepositoryALImpl();
+//			return employeeRepository;
+//		}
+//		return employeeRepository;
+		
+//		under this synchronized edition
+		if(employeeRepository == null) {
+			
+			synchronized (EmployeeRepositoryALImpl.class) {
+				if(employeeRepository == null) {
+					employeeRepository = new EmployeeRepositoryALImpl();
+					return employeeRepository;
+				}
+			}
 		}
 		return employeeRepository;
+		
 	}
 	
 //	private ArrayList<Employee> employees = new ArrayList<>();

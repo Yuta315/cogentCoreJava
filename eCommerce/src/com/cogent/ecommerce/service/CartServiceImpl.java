@@ -4,9 +4,36 @@ import java.util.List;
 
 import com.cogent.ecommerce.model.Cart;
 import com.cogent.ecommerce.repository.CartRepository;
+import com.cogent.ecommerce.repository.CartRepositoryImpl;
 
 
 public class CartServiceImpl implements CartService {
+	
+	CartRepository cartRepository = CartRepositoryImpl.getInstance();
+//	are we consuming the repo?
+	
+//	loose coupling : 
+	
+	private static CartService cartService;
+	private CartServiceImpl()
+	{
+		
+	}
+	public static CartService getInstance()
+	{
+		if(cartService == null) {
+			
+//			synchronized (cartRepositoryALImpl.class) {
+			synchronized (CartServiceImpl.class) {
+				if(cartService == null) {
+					cartService = new CartServiceImpl();
+					return cartService;
+				}
+			}
+		}
+		return cartService;
+	}
+	
 
 	@Override
 	public String addCart(Cart Cart) {

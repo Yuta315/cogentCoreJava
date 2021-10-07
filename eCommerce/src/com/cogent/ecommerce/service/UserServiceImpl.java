@@ -5,6 +5,27 @@ import java.util.List;
 import com.cogent.ecommerce.model.User;
 
 public class UserServiceImpl implements UserService {
+	
+	private static UserService userService;
+	private UserServiceImpl()
+	{
+		
+	}
+	public static UserService getInstance()
+	{
+		if(userService == null) {
+			
+//			synchronized (cartRepositoryALImpl.class) {
+			synchronized (UserServiceImpl.class) {
+				if(userService == null) {
+					userService = new  UserServiceImpl();
+					return userService;
+				}
+			}
+		}
+		return userService;
+	}
+	
 
 	@Override
 	public String addUser(User user) {
